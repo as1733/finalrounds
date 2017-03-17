@@ -1,0 +1,28 @@
+{
+  "name": "videoconferencing",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "jade": "~1.11.0",
+    "mongodb": "^2.2.24",
+    "morgan": "~1.7.0",
+    "open": "0.0.5",
+    "serve-favicon": "~2.3.0",
+    "websocket": "^1.0.24",
+    "ws": "^1.1.4"
+  },
+  "description": "USE OF RTC FOR 1to1 PEER calling and Videoconferencing RUN THE NODEJS SERVER _ HTTPS , change the ip suitable to the server pc ip  CHANGE THE IP IN workpage.html ie wss://xxx.xxx.xxx.xxx:xxxx to the server pc ip  any help please to connect on fb www.facebook.com/adityaizgreat",
+  "main": "https.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}
