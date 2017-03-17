@@ -1,5 +1,5 @@
 {
-    {
+    {var request = require('request');
         var https = require('https');
         var fs = require('fs');
         var WebSocket = require('ws').Server;
@@ -87,10 +87,50 @@
         link.on("message", function (data) {
             data = JSON.parse(data);
             if (data.action === "Create") {
-                createRoom(data, link);
+
+                var url='http://172.16.86.222:13000/login?nick='+data.username+"&password="+data.dcpass+'&secret=pooooool';
+                request(url, function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+
+                        responsefordcapi=JSON.parse(body);
+                        console.log("see this "+responsefordcapi["error"]);
+                        if(responsefordcapi["error"]!="incorrect password")
+                        {
+
+                            createRoom(data, link);
+                            console.log('user authenticated');
+                            result=false;
+
+                        }
+                        // Show the HTML for the Modulus homepage.
+
+                    }
+                });
+
+
             }
             if (data.action === "joining") {
-                joinroom(data, link)
+                var url='http://172.16.86.222:13000/login?nick='+data.username+"&password="+data.dcpass+'&secret=pooooool';
+                request(url, function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+
+                        responsefordcapi=JSON.parse(body);
+                        console.log("see this "+responsefordcapi["error"]);
+                        if(responsefordcapi["error"]!="incorrect password")
+                        {
+
+                            joinroom(data, link);
+                            console.log('user authenticated');
+                            result=false;
+
+                        }
+                        // Show the HTML for the Modulus homepage.
+
+                    }
+                });
+
+
+
 
             }
             if (data.action === "Offer") {
@@ -227,7 +267,8 @@
 /*#########################
 * #########################
 * #########################*/
-/*{
+/*
+{
     var open=require('open');
 
     var net = require('net');
@@ -320,4 +361,4 @@
 
 }
 
-    */
+*/

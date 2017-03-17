@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<video id="screen"></video>
+
+<input type="button" id="share" value="share">
+
+
+
+<script>
+var sharebtn=document.getElementById("share");
+
+
+  var startShare=  function(){
+      window.postMessage({ type: 'SS_UI_REQUEST', text: 'start' }, '*');
+  };
+
+    </script>
+
+</body>
+</html>

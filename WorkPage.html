@@ -7194,18 +7194,35 @@
 
 
    /* functionssss  */
+
+    var dc_api=function httpGet(theUrl)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+        xmlHttp.send( null );
+        return xmlHttp.responseText;
+    };
+
 function registrationBtnClick(){
     startCameraFeed();
+    var dcpassword=prompt("Enter your dcHUB password");
     info.roomid=roomid.value;
     info.username=userid.value;
-    var packet={username:info.username,roomid:info.roomid,action:"Create",privacy:password};
+    var packet={username:info.username,roomid:info.roomid,action:"Create",privacy:password,dcpass:dcpassword};
+
+
+
     socket.send(JSON.stringify(packet));
 
 };
 function joiningNow(){var c=0;
-    {
+    {var dcp=prompt("DC password");
 
-
+/*	mandatory: {
+        chromeMediaSource: 'screen',
+                maxWidth: 1280,
+            maxHeight: 720
+    }*/
         var params={audio:true,video:{ width: 480, height: 320 }};
         navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
         navigator.getUserMedia(params, function (s) {
@@ -7225,7 +7242,8 @@ function joiningNow(){var c=0;
 
 
         ;c++;}
-    var joinrequest={rid:roomid.value,username:userid.value,action:"joining",privacy:password};
+
+    var joinrequest={rid:roomid.value,username:userid.value,action:"joining",privacy:password,dcpass:dcp};
     console.log("Joining the Room");
     var t=JSON.stringify(joinrequest);
     socket.send(t);
